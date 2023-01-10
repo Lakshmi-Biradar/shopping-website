@@ -1,21 +1,18 @@
 public class AuthurizePaymentGatewayCtrl {
-//   public static String payByAuthrizePayment(String firstName, String lastName, String cardNumber, String amount, String cardMonth, String cardYear, String cvv, String country, String state, String zip, String street, String city){
     @AuraEnabled
     public static String payByAuthrizePayment(String cardNumber, String amount, String cardMonth, String cardYear, String cvv){
-        String email = 'lakshmibiradar96@gmail.com';//you can also feed this in LWC Form
-        // String fullName = firstName + ' ' + lastName;
-        // String phone = '9999999999'; //you can also feed this in LWC Form
-        String loginId = '2L73xfU6'; // these get from authurize.net sandbox account tab
-        String transactionKey = '38hbY83m36CZ8J8B';// these get from authurize.net sandbox account tab
-        //create JSON body JSON Genertor
+        String email = 'lakshmibiradar96@gmail.com';
+        String loginId = '2L73xfU6'; 
+        String transactionKey = '38hbY83m36CZ8J8B';
+        
         JSONGenerator payBody = JSON.createGenerator(true);
-        payBody.writeStartObject();//1
+        payBody.writeStartObject();
         payBody.writeFieldName('createTransactionRequest');
          
-        payBody.writeStartObject();//2
+        payBody.writeStartObject();
         payBody.writeFieldName('merchantAuthentication');
          
-        payBody.writeStartObject();//3
+        payBody.writeStartObject();
         payBody.writeStringField('name', loginId);
         payBody.writeStringField('transactionKey', transactionKey);
         payBody.writeEndObject();
@@ -23,15 +20,15 @@ public class AuthurizePaymentGatewayCtrl {
         payBody.writeStringField('refId', '123456');
         payBody.writeFieldName('transactionRequest');
          
-        payBody.writeStartObject();//4
+        payBody.writeStartObject();
         payBody.writeStringField('transactionType', 'authCaptureTransaction');
         payBody.writeStringField('amount', amount);
         payBody.writeFieldName('payment');
          
-        payBody.writeStartObject();//5
+        payBody.writeStartObject();
         payBody.writeFieldName('creditCard');
          
-        payBody.writeStartObject();//6
+        payBody.writeStartObject();
         payBody.writeStringField('cardNumber', cardNumber);
         payBody.writeStringField('expirationDate', cardYear + '-' + cardMonth);
         payBody.writeStringField('cardCode', cvv);
@@ -40,57 +37,16 @@ public class AuthurizePaymentGatewayCtrl {
          
         payBody.writeEndObject();
          
-        // payBody.writeFieldName('customer');
-        // payBody.writeStartObject();
-        // if(String.isNotBlank(email)){
-        //     payBody.writeStringField('email', email);    
-        // }
-        // payBody.writeEndObject();
-         
-        // payBody.writeFieldName('billTo');
-        // payBody.writeStartObject();
-         
-        // if(String.isNotBlank(firstName)){
-        //     payBody.writeStringField('firstName', firstName);
-        // }
-         
-        // if(String.isNotBlank(lastName)){
-        //     payBody.writeStringField('lastName', lastName);
-        // }
-         
-        // if(string.isNotBlank(fullName)){
-        //     payBody.writeStringField('company', fullName);
-        // }
-        // if(string.isNotBlank(street)){
-        //     payBody.writeStringField('address', street);
-        // }
-        // if(String.isNotBlank(city)){
-        //     payBody.writeStringField('city', city);
-        // }
-        // if(String.isNotBlank(state)){
-        //     payBody.writeStringField('state', state);
-        // }
-        // if(String.isNotBlank(zip)){
-        //     payBody.writeStringField('zip', zip);
-        // }
-        // if(String.isNotBlank(phone)){
-        //     payBody.writeStringField('phoneNumber', phone);
-        // }
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
-            // Instantiate a new http object
+        
         Http h = new Http();
          
-        // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
+        
         HttpRequest req = new HttpRequest();
         req.setEndpoint('https://apitest.authorize.net/xml/v1/request.api');
         req.setHeader('Content-Type', 'application/json');
         req.setMethod('POST');
         req.setBody(payBody.getAsString());
-      //  System.debug(payBody.getAsString());
-        // Send the request, and return a response
+      
         HttpResponse res = new HttpResponse();
         res = h.send(req);
         String responseBody = res.getBody();
@@ -114,19 +70,17 @@ public class AuthurizePaymentGatewayCtrl {
     }
  
     public static void payByEcheck(){
-        String email = 'lakshmibiradar96@gmail.com';//you can also feed this in LWC Form
-        // String phone = '9999999999'; //you can also feed this in LWC Form
         String loginId = '2L73xfU6';
         String transactionKey = '38hbY83m36CZ8J8B';
              
         JSONGenerator payBody = JSON.createGenerator(true);
-        payBody.writeStartObject();//1
+        payBody.writeStartObject();
         payBody.writeFieldName('createTransactionRequest');
          
-        payBody.writeStartObject();//2
+        payBody.writeStartObject();
         payBody.writeFieldName('merchantAuthentication');
          
-        payBody.writeStartObject();//3
+        payBody.writeStartObject();
         payBody.writeStringField('name', loginId);
         payBody.writeStringField('transactionKey', transactionKey);
         payBody.writeEndObject();
@@ -134,7 +88,7 @@ public class AuthurizePaymentGatewayCtrl {
         payBody.writeStringField('refId', '123456');
         payBody.writeFieldName('transactionRequest');
          
-        payBody.writeStartObject();//4
+        payBody.writeStartObject();
          
         payBody.writeStringField('transactionType', 'authCaptureTransaction');
          
@@ -142,10 +96,10 @@ public class AuthurizePaymentGatewayCtrl {
          
         payBody.writeFieldName('payment');
          
-        payBody.writeStartObject();//5
+        payBody.writeStartObject();
         payBody.writeFieldName('bankAccount');
          
-        payBody.writeStartObject();//6
+        payBody.writeStartObject();
         payBody.writeStringField('accountType', 'accountType');
         payBody.writeStringField('routingNumber', 'Routing_Number');
         payBody.writeStringField('accountNumber', 'Account_Number');
@@ -163,28 +117,7 @@ public class AuthurizePaymentGatewayCtrl {
         }
          
         payBody.writeEndObject();
-         
-        // payBody.writeFieldName('billTo');
-        // payBody.writeStartObject();
-        // payBody.writeStringField('firstName', '');
-        // payBody.writeStringField('lastName', '');
-        // payBody.writeStringField('company', '');
-        // payBody.writeStringField('address', '');
-        // payBody.writeStringField('city','');
-        // payBody.writeStringField('state', '');
-        // payBody.writeStringField('zip', '');
-        // payBody.writeStringField('country', '');
-        // payBody.writeStringField('phoneNumber', '');
-         
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
-        // payBody.writeEndObject();
- 
-        // Instantiate a new http object
         Http h = new Http();
-         
-        // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
         HttpRequest req = new HttpRequest();
         req.setEndpoint('https://apitest.authorize.net/xml/v1/request.api');
         req.setHeader('Content-Type', 'application/json');
