@@ -1,0 +1,21 @@
+
+<template>
+    <c-router>
+        <lightning-card  title="New Shopping App">
+            <lightning-button slot="actions" label="products" title="Products" class="slds-m-left_x-small" onclick={handleOpenProducts}></lightning-button>
+            <a href="javascript:void(0)" slot="actions" onclick={handleOpenCart} class="slds-m-left_x-small">
+                <lightning-icon icon-name="standard:webcart"   alternative-text="webcart" title="webcart"></lightning-icon>
+                <lightning-badge label={totalInCart} ></lightning-badge>
+            </a>
+        </lightning-card><br/>
+        <c-switch>
+            <c-route exact path="/">
+                <c-product-list></c-product-list>
+            </c-route>
+            <c-route exact path="/cart">
+                <c-cart-data cart-pushed-data={uniqueArray} total-billing-amount={totalBillingAmount}   oncartqtychange={handleCartQuantityChange} onselectcart={handleCartDeletion} onpayment={handleAfterPayment}></c-cart-data> 
+            </c-route>
+        </c-switch>
+        
+    </c-router>
+    </template>

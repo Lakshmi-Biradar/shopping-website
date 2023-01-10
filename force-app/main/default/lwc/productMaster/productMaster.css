@@ -1,0 +1,108 @@
+.grid-container {
+    width:100%;
+    background: -webkit-linear-gradient(
+        350deg,
+        rgb(239, 242, 245) 0%,
+        rgb(236, 237, 240) 80%
+      );
+    display: grid;
+    grid-template-columns: 20rem 60rem;
+    /* grid-template-rows: 100px 300px; */
+    grid-gap: 10px;
+    /* background-color: #2196F3; */
+    padding: 10px;
+  }
+  .container {
+      /* width: 60%; */
+      /* width: 100%; */
+      /* float: right; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+  
+    .slds-grid.justify-center {
+      justify-content: center;
+      /* float:right; */
+      /* width: 60%;
+      float: right; */
+      /* width: 60%;
+      float: right; */
+    }
+  
+  
+    .card {
+      display: grid;
+      grid-template-columns: 250px;
+      grid-template-rows: 150px 200px 50px;
+      grid-template-areas: "image" "text" "stats";
+    
+      /* border-radius: 18px; */
+      background: white;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+      font-family: roboto;
+      text-align: center;
+    
+      /* transition: 0.5s ease; */
+      margin: 30px;
+    }
+    .card-image {
+      grid-area: image;
+      padding: 20px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      background-size: cover;
+      max-height: 250px;
+      width: 100%;
+      min-height: 250px;
+    }
+  
+    .card-text {
+      grid-area: text;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1rem;
+      -webkit-text-fill-color: black;
+      text-align: left;
+      padding-top: 8rem;
+      padding-left: 1rem;
+    }
+  
+    .card-button{
+      width:fit-content;
+      background-color: #000;
+      color:#fff;
+      position:relative;
+      left: 1rem;
+      bottom:3rem;
+    }
+  
+    /* .card-button{
+       width:10rem;
+       max-height: 70px;
+      
+       min-height: 70px;
+       margin-left: 2rem;
+       margin-bottom: 7rem;
+       background-color: black;
+       border-top-left-radius: 5px;
+       border-top-right-radius: 5px;
+       border-bottom-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+       font-size: 10px;
+      font-weight: bolder;
+      -webkit-text-fill-color: white;
+     
+      
+    } */
+  
+    .card-search{
+      float: top;
+      /* display: inline; */
+    }
+  
+    /* .cart-child{ */
+      /* margin: 0%; */
+      /* width: 60%; */
+      /* float: left; */
+    /* }  */

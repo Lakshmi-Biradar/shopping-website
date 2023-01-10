@@ -1,0 +1,55 @@
+
+<template>
+    <!-- <div class="container">    
+        <h2>Category</h2>
+        <div>
+            <input  type="checkbox"  value="men's clothing" name="men's clothing" onchange={handleCategoryChange}>
+            <label>Men's category</label>
+        </div>
+        <div>
+            <input  type="checkbox"  value="women's clothing" name="women's clothing" onchange={handleCategoryChange}>
+            <label>Women's category</label>
+        </div>
+        <div>
+            <input  type="checkbox"  value="jewelery" name="jewelery" onchange={handleCategoryChange}>
+            <label>Jewelery</label>
+        </div> 
+        <div>
+            <input  type="checkbox"  value="electronics" name="electronics" onchange={handleCategoryChange}>
+            <label>electronics</label>
+        </div>
+          
+    </div>
+    <h2>Price</h2>
+    <div>
+        <input  type="checkbox"  value="0-50" name="price" onchange={handlePriceChange}>
+        <label>0-50</label>
+    </div>
+    <div>
+        <input  type="checkbox"  value="51-150" name="price" onchange={handlePriceChange}>
+        <label>51-150</label>
+    </div>
+    <div>
+        <input  type="checkbox"  value="151-500" name="price" onchange={handlePriceChange}>
+        <label>151-500</label>
+    </div>
+    <div>
+        <input  type="checkbox"  value="501" name="price" onchange={handlePriceChange}>
+        <label>501</label>
+    </div> -->
+    <lightning-checkbox-group name="Category"
+                              label="Category"
+                              options={category_options}
+                              value = []
+                              onchange={handleCategoryChange}></lightning-checkbox-group>
+    <!-- <p>Selected Values are: {selectedValues}</p> -->
+
+    <lightning-checkbox-group name="Price"
+                              label="Checkbox Group"
+                              options={Priceoptions}
+                              value=[]
+                              onchange={handlePriceChange}></lightning-checkbox-group>
+    <!-- <p>Selected Values are: {selectedValues}</p> -->
+
+
+</template>
